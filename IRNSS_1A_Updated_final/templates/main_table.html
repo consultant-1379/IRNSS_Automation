@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+th {
+    border: 1px solid #E7EFF4  ;
+    text-align: left;
+    padding: 8px;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #A4DBF9;
+}
+</style>
+</head>
+<body>
+
+<div class="flashes">
+  {% for message in get_flashed_messages()%}
+   <b>{{ message }} </b> 
+  {% endfor %}
+</div>
+
+<h2>PLEASE SELECT THE FILES WHICH NEED TO PERFORM BELOW OPTIONS:</h2>
+</body>	
+<table>
+
+<form method= "post","get">
+  <tr>
+    <th>Click</th>
+	<th>File Size in KB</th>
+    <th>File Names</th>
+  </tr>
+  {% for item in results %}
+	<tr>
+	{% if item|length > 0 %}
+		{% set ite = item.split(':') %}
+		
+			<td><input type="checkbox" name='checks' value={{ite[1]}}> </td> 
+			<td>{{ite[0]}}</td>
+			<td>{{ite[1]}}</td>
+			</tr>
+	{% endif %}
+  {% endfor %}
+</table>
+<br>
+<input type="submit" value="DELETE">
+</form>
+</html>

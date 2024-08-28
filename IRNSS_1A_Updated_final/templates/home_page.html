@@ -1,0 +1,30 @@
+<!doctype html>
+<html> 
+<head>
+<title>Flask Message flashing</title>
+<style>
+body {
+	background-image: url({{ url_for('static', filename='server1.jpg')}});
+}
+</style>
+</head>
+   <body>
+   
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+               <li<{{ message }}</li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+	
+      <h1>Welcome to IRNSS-1A (Intelligent Reporting NLP Solutions Savings – 1 Artificial Intelligence)  </h1>
+      <p>Do you want to <a href = "{{ url_for('server_details') }}">
+         <b>log in?</b></a></p>
+		 
+
+	
+   </body>
+</html>
